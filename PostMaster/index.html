@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <title>PostMan Clone</title>
+    <style>
+        #prismResponsepre {
+            max-height: 500px;
+
+        }
+
+        #body {
+            background-image: url(bright_red_and_white_hd_red_aesthetic.jpg);
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background-size: cover;
+            opacity: 1;
+        }
+
+        .lhsHeading {
+            font-size: 25px;
+            font-weight: bold;
+
+        }
+
+        .radioHeading {
+            font-size: 20px;
+            font-weight: bold;
+            font-style: oblique;
+
+        }
+
+        .radioHeading1 {
+            font-size: 20px;
+        }
+
+        .welcome {
+            width: fit-content;
+            height: fit-content;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            /* opacity: 0.5; */
+            z-index: -1;
+        }
+        .insideWelcome{
+            z-index: 1; 
+            opacity: 1; 
+            color: rgba(red, green, blue, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="body">
+
+        <!-- NavBar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><i class="bi bi-signpost-split"></i> PostMaster</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact Us</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text" id="time">
+                        HH:MM:SS
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <!-- Welcome to PostMaster -->
+        <div class="container welcome">
+            <div class="insideWelcome">
+                <h1 class="text-center my-3"> Welcome to PostMaster <i class="bi bi-signpost-split-fill"></i></h1>
+            </div>
+        </div>
+        <div class="container my-3">
+            <!-- Url box -->
+            <div class="form-group row">
+                <label for="url" class="col-sm-2 col-form-label lhsHeading">Enter URL</label>
+                <div class="col-sm-10">
+                    <input type="Text" class="form-control" id="urlField" placeholder="Enter URL here">
+                </div>
+            </div>
+            <!-- Request Type Radios -->
+
+            <fieldset class="row mb-3 my-3">
+                <legend class="col-form-label col-sm-2 pt-0 lhsHeading">Request Method</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input radioHeading1" type="radio" name="requestType" id="get"
+                            value="get">
+                        <label class="form-check-label radioHeading" for="requestType1">
+                            GET
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input radioHeading1 " type="radio" name="requestType" id="post"
+                            value="post">
+                        <label class="form-check-label radioHeading" for="requestType2">
+                            POST
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Content Type Radios -->
+
+            <fieldset class="row mb-3">
+                <legend class="col-form-label col-sm-2 pt-0 lhsHeading">Content Type</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input radioHeading1" type="radio" name="contentType" id="jsonRadio"
+                            value="JSON" checked>
+                        <label class="form-check-label radioHeading" for="gridRadios1">
+                            JSON
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input radioHeading1" type="radio" name="contentType" id="customRadio"
+                            value="Parameters">
+                        <label class="form-check-label radioHeading" for="Parameters">
+                            Custon Parameters
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Parameters box - This will hide on clicking json option in content type -->
+
+            <div id="parametersBox" class="form-row">
+                <form class="row g-3">
+                    <label for="url" class="col-sm-2 col-form-label">Parameter 1</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="Enter Key" id="paramKey1">
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" id="paramValue1" placeholder="Enter Value">
+                    </div>
+                    <!-- <div class="col"> -->
+                    <button class="btn btn-primary col" style="width: 63px;" id="addBtn">New</button>
+                    <!-- </div> -->
+                </form>
+                <!-- div for added parametersBox -->
+                <div id="addparam"></div>
+            </div>
+
+
+            <!-- JSON request box - This will hide on clicking Custom Parameters option in content type-->
+
+            <div class="my-3" id="jsonBox">
+                <div class="form-group row">
+                    <label for="jsonBox" class="col-sm-2 col-form-label lhsHeading">Enter Request JSON</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" placeholder="Enter Request JSON" id="jsonText"
+                            style="height: 100px"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- submit button which will fetch api -->
+            <div class="form-group row my-3" id="submit">
+                <label for="url" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <button class="btn btn-primary">Submit Request</button>
+                </div>
+            </div>
+
+            <!-- Response box -->
+            <div class="my-3" id="response">
+                <div class="form-group row">
+                    <label for="response" class="col-sm-2 col-form-label lhsHeading">Response</label>
+                    <div class="col-sm-10">
+                        <!-- <textarea class="form-control" placeholder="Your response will appear here" id="ResponseJsonText"
+                        style="height: 100px"></textarea> -->
+                        <pre id="prismResponsepre" class="language-javascript">
+                            <code id="prismResponse" class="language-javascript">
+
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+<script src="app.js"></script>
+<script src="prism.js"></script>
+
+</html>

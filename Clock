@@ -1,0 +1,23 @@
+let navTime = document.getElementById("time");
+let h, m, s, stat = "PM";
+
+function time() {
+  const today = new Date();
+  h = today.getHours();
+  m = today.getMinutes();
+  s = today.getSeconds();
+  m = check(m);
+  s = check(s);
+  h = (h > 12) ? h - 12 : h;
+  h = (h==0)? 12 : h;
+  if (h == 12) {
+    stat = stat === "PM" ? "AM" : "PM";
+  }
+  navTime.innerHTML = h + ":" + m + ":" + s + " " + stat;
+}
+function check(i) {
+  return i = (i < 10)? "0" + i : i;
+}
+setInterval(() => {
+    time();
+}, 1000);
