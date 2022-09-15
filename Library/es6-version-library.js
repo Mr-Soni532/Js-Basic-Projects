@@ -145,6 +145,5 @@ search.addEventListener("input", function () {
     {
       display.fetchData();
     } 
-  
   });
 });
